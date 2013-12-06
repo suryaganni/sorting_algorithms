@@ -1,0 +1,27 @@
+<h1>Welcome to Sorting Algorithms</h1>
+
+<%= form_for @sorting, :url => sort_data_sortings_path do |f| %>
+
+ <% if @sorting.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@sorting.errors.count, "error") %> prohibited
+      this sort to perform:</h2>
+    <ul>
+    <% @sorting.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= f.text_field :array_list, :value => f.object.input_list %>
+  <b>Enter elements by "," seperator</b>
+  </br>
+  <%= f.select :sorting_type, Sorting::SORTING_TYPE %>
+  </br></br>
+  <%= f.submit %>
+<% end %>
+<% if @sorting.sorted_list %>
+  </br>
+  Output:- <%= @sorting.sorted_list.inspect %>
+<% end %>

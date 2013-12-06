@@ -1,4 +1,10 @@
 SortingAlgorithms::Application.routes.draw do
+  root :to => 'sortings#index'
+  resources :sortings do
+    collection do
+      post 'sort_data'
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
